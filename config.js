@@ -1,7 +1,8 @@
-const [MATRIX_ROWS, MATRIX_COLUMNS] = [50, 100];
 const OBSTACLE_DENSITY = 0.2;
 const OBSTACLE_COLOR = "black";
-const PATH_COLOR = () => ["red", "blue"][Math.floor(Math.random() * 2)];
 const SOURCE_COLOR = "green";
-const DESTINATION_COLOR = "red";
-const STEP_DELAY_MS = 75;
+const DESTINATION_COLOR = "green";
+const STEP_DELAY_MS = 100;
+
+const highlightColors = ["#000080", "#87CEEB", "#4169E1", "#367588", "#6A5ACD"]
+const getHighlightColor = () => highlightColors[Math.floor(Math.random() * highlightColors.length)]

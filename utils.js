@@ -29,7 +29,7 @@ class Game {
     let step = 1;
     while (true) {
     // console.log(`step ${step}`);
-      currentBlock.element.style.backgroundColor = PATH_COLOR();
+      currentBlock.element.style.backgroundColor = getHighlightColor();
       if (currentBlock.equals(this.destination)) {
         break;
       }
@@ -53,19 +53,22 @@ class Game {
   getMatrix() {
     const matrix = getArray(MATRIX_ROWS).map(() => getArray(MATRIX_COLUMNS));
     for (let i = 0; i < matrix.length; i++) {
+      const rowContainer = document.createElement("div");
+      rowContainer.classList.add("flex")
       for (let j = 0; j < matrix[0].length; j++) {
-        const block = document.createElement("div");
+        const blockElem = document.createElement("div");
         const isObstacle = Math.random() < OBSTACLE_DENSITY;
-        matrix[i][j] = new Block(i, j, isObstacle, block);
+        matrix[i][j] = new Block(i, j, isObstacle, blockElem);
 
         if (isObstacle) {
-          block.style.backgroundColor = OBSTACLE_COLOR;
+          blockElem.style.backgroundColor = OBSTACLE_COLOR;
         }
-        block.style.height = `${BLOCK_HEIGHT}px`;
-        block.style.width = `${BLOCK_WIDTH}px`;
-        block.onclick = () => this.onclick(this.matrix[i][j]);
-        BODY.appendChild(block);
+        blockElem.style.height = `${BLOCK_HEIGHT}px`;
+        blockElem.style.width = `${BLOCK_WIDTH}px`;
+        blockElem.onclick = () => this.onclick(this.matrix[i][j]);
+        rowContainer.appendChild(blockElem);
       }
+      document.body.appendChild(rowContainer);
     }
     return matrix;
   }
@@ -123,7 +126,7 @@ class Game {
       }
     }
     this.lastSteps.push([nextR, nextC]);
-    // this.lastSteps = this.lastSteps.slice(0, 16);
+    this.lastSteps = this.lastSteps.slice(0, this.matrix.length * this.matrix[0].length);
     return this.matrix[nextR][nextC];
   }
 
