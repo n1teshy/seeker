@@ -4,4 +4,4 @@ const OBSTACLE_COLOR = "black";
 const PATH_COLOR = () => ["red", "blue"][Math.floor(Math.random() * 2)];
 const SOURCE_COLOR = "green";
 const DESTINATION_COLOR = "red";
-const STEP_DELAY_MS = 200;
+const STEP_DELAY_MS = 75;
