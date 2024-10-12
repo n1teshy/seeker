@@ -1,0 +1,1 @@
+a-star algorithm that uses manhattan distance to find a path from a source to a destination on a 2D map, sounds fancy but is simple, visit the link in the description, tap on any block to select the source, tap on another block to select the destination and let the algorithm find a path
